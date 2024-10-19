@@ -1,0 +1,18 @@
+#!/bin/bash
+pardir="$(dirname "$PWD")"
+#banner:
+arg1="bnExercise 2.3"
+#special instructions:
+arg2="siWhen you see the line INFO Accepting connections at http://localhost:5000,
+open a browser and enter localhost:5000 as the URL, then Press here to test your solution button
+(after the Timer completes, you should see Congratulations! next to the Press here to test your solution button)"
+#copy commands:
+arg3="cpmkdir frontend backend
+cp dockerfile_fe frontend/Dockerfile
+cp -a $pardir/material-applications/example-frontend/. frontend
+cp dockerfile_be backend/Dockerfile
+cp -a $pardir/material-applications/example-backend/. backend"
+#build and run commands:
+arg4="brdocker compose up"
+#execute it!
+$pardir/scripts/master.sh "$arg1" "$arg2" "$arg3" "$arg4"

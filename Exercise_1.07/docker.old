@@ -1,0 +1,54 @@
+#!/bin/bash
+#*** banner ***
+tput setaf 196
+echo "* * * * * * * * * * * * * * * * * * * * * * *"
+echo "*                                           *"
+echo "*  Execution Script for Devops with Docker  *"
+#todo: update exercise number and name
+echo "*  Exercise 1.7: Image for Script           *"
+#end update
+echo "*                                           *"
+echo "* * * * * * * * * * * * * * * * * * * * * * *"
+#*** add special instructions ***
+tput setaf 3 && echo "*** Special Script Instructions ***" && tput setf 0 && set -x
+set +x && tput setaf 15; tput setab 1
+#todo: insert special instructions
+echo "When you see a block of html code, press Ctrl-C"
+#end special instructions
+tput setab 0 && wait && echo
+#*** file cleanup ***
+tput setaf 3 && echo "Remove All Files and Directories (except docker* files)" && tput setaf 8 && set -x
+find . ! -iname 'Docker*' -type f -exec rm -f {} +
+rm -r -- */ &> /dev/null
+set +x
+#*** docker cleanup ***
+tput setaf 3 && echo "Remove All Images and Containers" && tput setaf 8 && set -x
+docker rm -f $(docker ps -aq) &> /dev/null
+docker rmi $(docker images -q) &> /dev/null
+docker system prune -af &> /dev/null
+set +x
+#*** copy code from source ***
+tput setaf 3 && echo "Copy Application Code from Source Repository" && tput setaf 213 && exerdir="$PWD" && cd .. && set -x
+#todo: insert cp statements
+#end cp statements
+set +x && cd $exerdir && set -x && dir && set +x
+#*** display Dockerfile ***
+tput setaf 3 && echo "Display Dockerfile" && tput setaf 166 && set -x
+cat Dockerfile 2> /dev/null
+set +x
+#*** execute docker build and run ***
+tput setaf 3 && echo "Execute Docker Image and Container Commands" && tput setaf 14 && set -x
+#todo: insert docker build and run commands
+docker build . -t lister
+#end build and run commands
+set +x
+#*** show results ***
+tput setaf 3 && echo "Show Results" && tput setaf 2 && set -x
+#todo: insert result commands
+docker run -it lister
+#end result commands
+set +x
+#*** backup POC data ***
+tput setaf 3 && echo "Backup POC Directory and Subdirectories" && tput setaf 21 && set -x
+cd /mnt/d/leaguex
+./backup.sh
